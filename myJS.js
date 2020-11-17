@@ -23,15 +23,28 @@ class Box {
         friction:0.7,
         restitution:0.5
     }
-    this.body = Bodies.rectangle(x,y,width,height,options);
-    this.width = width;
-    this.height = height;
+    this.body= Bodies.rectangle(x,y,width,height,options);
+    this.width= width;
+    this.height= height;
+    this.visibility=255;
+    this.image=loadImage("squareBlue.png");
     World.add(world, this.body);
   }
   display(){
-    var pos =this.body.position;
-    rectMode(CENTER);
-    rect(pos.x, pos.y, this.width, this.height);
+    if(this.body.speed<5){
+        var pos =this.body.position;
+        imageMode(CENTER);
+        image(this.image,pos.x, pos.y, this.width, this.height);
+    }else{
+        World.remove(world,this.body);
+        push();
+        this.visibility-=10;
+        var pos =this.body.position;
+        tint(255,this.visibility);
+        imageMode(CENTER);
+        image(this.image,pos.x,pos.y,this.width,this.height);
+        pop();
+    }
   }
 }
 
@@ -68,6 +81,9 @@ class SlingShot{
     }
     fly(){
         this.sling.bodyA = null;
+    }
+    attach(body){
+        this.sling.bodyA=body;
     }
     display(){
         if(this.sling.bodyA){

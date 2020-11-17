@@ -63,10 +63,9 @@ function draw() {
   ball.display();
 
   stroke(0);
-  
+
   a.display();
 
-  fill("pink");
   a11.display();
   a12.display();
   a13.display();
@@ -75,36 +74,30 @@ function draw() {
   a16.display();
   a17.display();
 
-  fill("lightgreen");
   a21.display();
   a22.display();
   a23.display();
   a24.display();
   a25.display();
 
-  fill("orange");
   a31.display();
   a32.display();
   a33.display();
- 
-  fill("lightblue");
+
   a41.display();
   
   b.display();
 
-  fill("lightgreen");
   b11.display();
   b12.display();
   b13.display();
   b14.display();
   b15.display();  
 
-  fill("orange");
   b21.display();
   b22.display();
   b23.display();
 
-  fill("lightblue");
   b31.display();
 
   drawSprites();
@@ -116,4 +109,10 @@ function mouseDragged(){
 
 function mouseReleased(){
     sling.fly();
+}
+
+function keyPressed(){
+    if(keyCode === 32){
+        sling.attach(ball.body);
+    }
 }
