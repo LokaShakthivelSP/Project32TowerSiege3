@@ -30,6 +30,13 @@ class Box {
     this.image=loadImage("squareBlue.png");
     World.add(world, this.body);
   }
+
+  score(){
+    if(this.visibility<0 && this.visibility> -105){
+      score++;
+    }
+  }
+
   display(){
     if(this.body.speed<5){
         var pos =this.body.position;
